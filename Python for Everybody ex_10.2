@@ -1,0 +1,19 @@
+fname = open('mbox-short.txt')
+counts = dict()
+for line in fname :
+    if line.startswith('From '):
+        line = line.rstrip()
+        words = line.split()
+        name = words[5]
+        name2 = name.split(':')
+        name3 = name2[0]
+        counts[name3] = counts.get(name3,0) + 1
+
+
+lst = list()
+for key, val in counts.items() :
+    lst.append( (key, val) )
+lst.sort()
+
+for val, key in lst :
+    print(val, key)
