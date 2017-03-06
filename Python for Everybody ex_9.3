@@ -1,0 +1,16 @@
+fname = open('mbox-short.txt')
+counts = dict()
+for word in fname:
+    if word.startswith("From ") :
+        word = word.rstrip()
+        words = word.split()
+        name = words[1]
+        counts[name]= counts.get(name,0) +1
+
+bigcount = None
+bigword = None
+for wor,count in counts.items() :
+    if bigcount is None or count> bigcount:
+        bigword = wor
+        bigcount= count
+print(bigword, bigcount)
