@@ -1,0 +1,12 @@
+user_response = input("Enter file name: ")
+if len(user_response) == 0:
+    user_response = "mbox-short.txt"
+inf = open(user_response)
+count = 0
+total = 0
+for line in inf :
+    if line.startswith("X-DSPAM-Confidence:") :
+        line = line.rstrip()
+        x = float(line[19:])
+        total = total + x
+print('Average spam confidence: ', total/27)
